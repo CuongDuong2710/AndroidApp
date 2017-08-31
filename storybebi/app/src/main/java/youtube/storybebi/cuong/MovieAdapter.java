@@ -32,12 +32,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         this.movies = movies;
     }
 
+    // inflates movie_list_row.xml
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_list_row, parent, false);
         return new MyViewHolder(itemView);
     }
 
+    // set data to each row
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = movies.get(position);

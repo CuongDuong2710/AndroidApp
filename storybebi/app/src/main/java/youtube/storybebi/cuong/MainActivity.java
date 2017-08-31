@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener(){
+
+            @Override
+            public void onClick(View view, int position) {
+                Movie movie = movies.get(position);
+                Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+
+        }));
+
         prepareMovieDate();
     }
 
@@ -50,4 +67,5 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
 
     }
+
 }

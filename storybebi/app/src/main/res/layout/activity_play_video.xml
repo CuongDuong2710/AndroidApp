@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context="youtube.storybebi.cuong.PlayVideoActivity">
 
-    <TextView
-        android:id="@+id/title_video_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play Video"/>
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.youtube.player.YouTubePlayerView>
 
 </android.support.constraint.ConstraintLayout>

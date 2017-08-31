@@ -7,10 +7,12 @@ package youtube.storybebi.cuong;
 public class Movie {
     private Integer image;
     private String title;
+    private String videoId;
 
-    public Movie(Integer image, String title) {
+    public Movie(Integer image, String title, String videoId) {
         this.image = image;
         this.title = title;
+        this.videoId = videoId;
     }
 
     public Integer getImage() {
@@ -29,4 +31,11 @@ public class Movie {
         this.title = title;
     }
 
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
 }

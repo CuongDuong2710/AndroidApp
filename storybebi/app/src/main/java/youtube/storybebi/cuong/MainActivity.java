@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Movie movie = movies.get(position);
                 Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected", Toast.LENGTH_SHORT).show();
-                sendData(movie.getTitle());
+                sendData(movie.getTitle(), movie.getVideoId());
             }
 
             @Override
@@ -50,28 +50,29 @@ public class MainActivity extends AppCompatActivity {
         prepareMovieDate();
     }
 
-    private void sendData(String title) {
+    private void sendData(String title, String videoId) {
         Intent intent = new Intent(MainActivity.this, PlayVideoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", title );
+        bundle.putString("videoId", videoId);
         intent.putExtra("data", bundle);
         startActivity(intent);
     }
 
     private void prepareMovieDate() {
-        Movie movie = new Movie(R.drawable.around_the_world_eighty_days, "Around The World In Eighty Days");
+        Movie movie = new Movie(R.drawable.around_the_world_eighty_days, "Anh chàng đánh trống", "ZCyDhkODKjw");
         movies.add(movie);
 
-        movie = new Movie(R.drawable.david_copperfield, "David Copperfield");
+        movie = new Movie(R.drawable.david_copperfield, "Anh và em gái", "v5--09nEalQ");
         movies.add(movie);
 
-        movie = new Movie(R.drawable.frankenstein, "Frankenstein");
+        movie = new Movie(R.drawable.frankenstein, "Ba anh em", "Pm5PGnPLJy8");
         movies.add(movie);
 
-        movie = new Movie(R.drawable.story_arion_and_dolphin, "Story of Arion and the Dolphin");
+        movie = new Movie(R.drawable.story_arion_and_dolphin, "Ba bà kéo sợi", "3-2c0b1u7s8");
         movies.add(movie);
 
-        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Aladdin And The Magic Lamp");
+        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Ba người lùn trong rừng", "cypnbgSVv20");
         movies.add(movie);
 
         mAdapter.notifyDataSetChanged();

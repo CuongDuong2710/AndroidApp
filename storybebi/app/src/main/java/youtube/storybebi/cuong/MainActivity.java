@@ -1,5 +1,6 @@
 package youtube.storybebi.cuong;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Movie movie = movies.get(position);
                 Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected", Toast.LENGTH_SHORT).show();
+                sendData(movie.getTitle());
             }
 
             @Override
@@ -46,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         }));
 
         prepareMovieDate();
+    }
+
+    private void sendData(String title) {
+        Intent intent = new Intent(MainActivity.this, PlayVideoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title );
+        intent.putExtra("data", bundle);
+        startActivity(intent);
     }
 
     private void prepareMovieDate() {

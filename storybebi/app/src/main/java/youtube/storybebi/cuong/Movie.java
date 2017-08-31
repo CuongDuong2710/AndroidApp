@@ -5,19 +5,19 @@ package youtube.storybebi.cuong;
  */
 
 public class Movie {
-    private String image;
+    private Integer image;
     private String title;
 
-    public Movie(String image, String title) {
+    public Movie(Integer image, String title) {
         this.image = image;
         this.title = title;
     }
 
-    public String getImage() {
+    public Integer getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Integer image) {
         this.image = image;
     }
 

@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         }));
 
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
         prepareMovieDate();
     }
 
@@ -73,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
         movies.add(movie);
 
         movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Ba người lùn trong rừng", "cypnbgSVv20");
+        movies.add(movie);
+
+        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Hanxơ sắt", "wWdtrpHDiEc");
+        movies.add(movie);
+
+        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Gã thợ xay nghèo khó", "PJY50e9WYs4");
         movies.add(movie);
 
         mAdapter.notifyDataSetChanged();

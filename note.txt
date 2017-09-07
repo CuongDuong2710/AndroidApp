@@ -1,0 +1,28 @@
+Bi loi khong render CollapsingToolbarLayout duoc
+
+1. "Error Inflating CollapsingToolbarLayout"
+
+app:statusBarScrim="@null"
+
+
+2. "This Activity already has an action bar supplied by the window decor"
+
+Add single line android:theme="@style/AppTheme.NoActionBar" to activity in AndroidManifest and you've done.
+
+AndroidManifest.xml:
+
+<activity android:name=".activity.YourActivity"
+          android:theme="@style/AppTheme.NoActionBar"><!-- ADD THIS LINE -->
+
+styles.xml
+
+<style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+</style>
+
+
+3. flex = 1
+
+You want to expand and fill all the available space on the screen
+

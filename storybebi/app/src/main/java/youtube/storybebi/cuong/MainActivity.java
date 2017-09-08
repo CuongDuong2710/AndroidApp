@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         prepareMovieDate();
+
     }
 
     private void sendData(String title, String videoId) {

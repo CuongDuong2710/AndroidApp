@@ -1,6 +1,8 @@
 package youtube.storybebi.cuong;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,10 +32,10 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            count = (TextView) view.findViewById(R.id.count);
-            thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
+            title = view.findViewById(R.id.title);
+            count = view.findViewById(R.id.count);
+            thumbnail = view.findViewById(R.id.thumbnail);
+            overflow = view.findViewById(R.id.overflow);
         }
     }
 
@@ -64,7 +66,9 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, MainActivity.class);
+                ((Activity) mContext).startActivity(intent);
+                ((Activity) mContext).finish();
             }
         });
 

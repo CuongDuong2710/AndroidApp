@@ -7,7 +7,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,21 +15,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class ListMoviesActivity extends AppCompatActivity {
     @BindView(R.id.list_video) RecyclerView recyclerView;
 
-
     private List<Movie> movies = new ArrayList<>();
-//    private RecyclerView recyclerView;
     private MovieAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_main);
+        setContentView(R.layout.list_movies);
         ButterKnife.bind(this);
-
-//        recyclerView = (RecyclerView) findViewById(R.id.list_video);
 
         mAdapter = new MovieAdapter(movies);
 
@@ -62,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendData(String title, String videoId) {
-        Intent intent = new Intent(MainActivity.this, PlayVideoActivity.class);
+        Intent intent = new Intent(ListMoviesActivity.this, PlayVideoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", title );
         bundle.putString("videoId", videoId);

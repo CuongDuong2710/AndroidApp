@@ -67,7 +67,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, MainActivity.class);
+                Intent intent = new Intent(mContext, ListMoviesActivity.class);
                 ((Activity) mContext).startActivity(intent);
                 ((Activity) mContext).finish();
             }

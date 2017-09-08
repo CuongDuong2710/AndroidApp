@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity2"
+            android:name=".ListAlbumsActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity android:name=".PlayVideoActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ListMoviesActivity">
         </activity>
         <activity android:name=".SplashActivity"
             android:theme="@style/SplashTheme">

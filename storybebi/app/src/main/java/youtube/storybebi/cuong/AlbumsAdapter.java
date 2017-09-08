@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Ravi Tamada on 18/05/16.
  */
@@ -27,18 +30,16 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
     private List<Album> albumList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
-        public ImageView thumbnail, overflow;
+        @BindView(R.id.title) TextView title;
+        @BindView(R.id.count) TextView count;
+        @BindView(R.id.thumbnail) ImageView thumbnail;
+        @BindView(R.id.overflow) ImageView overflow;
 
         public MyViewHolder(View view) {
             super(view);
-            title = view.findViewById(R.id.title);
-            count = view.findViewById(R.id.count);
-            thumbnail = view.findViewById(R.id.thumbnail);
-            overflow = view.findViewById(R.id.overflow);
+            ButterKnife.bind(this, view);
         }
     }
-
 
     public AlbumsAdapter(Context mContext, List<Album> albumList) {
         this.mContext = mContext;

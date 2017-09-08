@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by QUOC CUONG on 31/08/2017.
  */
@@ -18,13 +21,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     private List<Movie> movies;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
-        public TextView title;
+        @BindView(R.id.image_video) ImageView image;
+        @BindView(R.id.title_video) TextView title;
 
         public MyViewHolder(View view) {
             super(view);
-            image = view.findViewById(R.id.image_video);
-            title = view.findViewById(R.id.title_video);
+            ButterKnife.bind(this, view);
         }
     }
 

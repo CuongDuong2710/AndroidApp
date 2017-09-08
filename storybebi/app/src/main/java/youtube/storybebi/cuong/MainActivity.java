@@ -13,17 +13,24 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.list_video) RecyclerView recyclerView;
+
+
     private List<Movie> movies = new ArrayList<>();
-    private RecyclerView recyclerView;
+//    private RecyclerView recyclerView;
     private MovieAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
+        ButterKnife.bind(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.list_video);
+//        recyclerView = (RecyclerView) findViewById(R.id.list_video);
 
         mAdapter = new MovieAdapter(movies);
 

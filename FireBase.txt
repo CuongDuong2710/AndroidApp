@@ -1,2 +1,9 @@
 1. Add Firebase to your Android app in Android Studio
+2. Change rules of authentication
 
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth == null"
+  }
+}

@@ -20,6 +20,7 @@ public class GetValueActivity extends AppCompatActivity {
     private ListView mUserList;
 
     private ArrayList<String> mUsernames = new ArrayList<>();
+    private ArrayList<String> mKeys = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,30 @@ public class GetValueActivity extends AppCompatActivity {
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                // Get new user and add to username list
                 String value = dataSnapshot.getValue(String.class);
                 mUsernames.add(value);
+
+                // Get new key and add key list
+                String key = dataSnapshot.getKey();
+                mKeys.add(key);
+
+                // update list view
                 arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                // get updated value
+                String value = dataSnapshot.getValue(String.class);
+                String key = dataSnapshot.getKey();
 
+                // get index of updated value and set to username list
+                int index = mKeys.indexOf(key);
+                mUsernames.set(index, value);
+
+                // update
+                arrayAdapter.notifyDataSetChanged();
             }
 
             @Override

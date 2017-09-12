@@ -13,5 +13,23 @@ https://fir-tutorials-1d984.firebaseio.com/User_01
 
 mDatabase = FirebaseDatabase.getInstance().getReference().child("User_01");
 
+4. Export JSON format
+https://storybebi-179314.firebaseio.com/.json?format=export
 
+5. Document
 
+https://www.tutorialspoint.com/firebase/firebase_arrays.htm
+
+6. Java Doc Style
+
+https://alvinalexander.com/java/edu/pj/pj010014
+
+To generatae comments use /** and press "enter" key before the method declaration. It will automatically include javadoc.
+
+// Log album
+Album{name='Truyện cổ tích', numOfVideos=15, imageUrl=https://goo.gl/GGtjsW}
+Album{name='Truyện cổ Grim', numOfVideos=7, imageUrl=https://goo.gl/GGtjsW}
+
+// Log value
+{numberOfMovies=15, movies=[{videoId=Pm5PGnPLJy8, lenght=10:30, title=Ba anh em}, {videoId=ZCyDhkODKjw, length=5:30, title=Anh chàng đánh trống}], imageUrl=https://goo.gl/GGtjsW, album=Truyện cổ tích}
+{numberOfMovies=7, imageUrl=https://goo.gl/GGtjsW, album=Truyện cổ Grim}

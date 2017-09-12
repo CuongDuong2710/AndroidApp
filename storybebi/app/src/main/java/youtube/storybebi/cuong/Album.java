@@ -5,16 +5,16 @@ package youtube.storybebi.cuong;
  */
 public class Album {
     private String name;
-    private int numOfSongs;
-    private int thumbnail;
+    private String imageUrl;
+    private String numberOfMovies;
 
     public Album() {
     }
 
-    public Album(String name, int numOfSongs, int thumbnail) {
+    public Album(String name, String numberOfMovies, String imageUrl) {
         this.name = name;
-        this.numOfSongs = numOfSongs;
-        this.thumbnail = thumbnail;
+        this.numberOfMovies = numberOfMovies;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -25,19 +25,28 @@ public class Album {
         this.name = name;
     }
 
-    public int getNumOfSongs() {
-        return numOfSongs;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setNumOfSongs(int numOfSongs) {
-        this.numOfSongs = numOfSongs;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getNumberOfMovies() {
+        return numberOfMovies;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setNumberOfMovies(String numberOfMovies) {
+        this.numberOfMovies = numberOfMovies;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "name='" + name + '\'' +
+                ", numOfVideos=" + numberOfMovies +
+                ", imageUrl=" + imageUrl +
+                '}';
     }
 }

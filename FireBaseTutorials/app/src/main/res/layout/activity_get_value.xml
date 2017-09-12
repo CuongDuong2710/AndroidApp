@@ -7,18 +7,9 @@
     android:orientation="vertical"
     tools:context="in.android.cuong.firebasetutorials.GetValueActivity">
 
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        android:textAppearance="@style/TextAppearance.AppCompat" />
 
-    <TextView
-        android:id="@+id/txtAge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Age:"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:layout_marginTop="20dp"/>
+    <ListView
+        android:id="@+id/list_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -7,3 +7,11 @@
     ".write": "auth == null"
   }
 }
+
+3. Create instance of FirebaseDatabase at child /User_01
+https://fir-tutorials-1d984.firebaseio.com/User_01
+
+mDatabase = FirebaseDatabase.getInstance().getReference().child("User_01");
+
+
+

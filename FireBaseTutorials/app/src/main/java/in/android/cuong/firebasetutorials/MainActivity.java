@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String name = "";
 
+    // declare DatabaseReference
     private DatabaseReference mDatabase;
 
     @Override
@@ -25,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
         mEditName = (EditText) findViewById(R.id.edt_name);
-
         mFireBasebtn = (Button) findViewById(R.id.firebase_btn);
+
+        // create instance of FirebaseDatabase connect "https://fir-tutorials-1d984.firebaseio.com/"
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("User_01");
 
         mFireBasebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 // 1 - Create child in root object
                 // 2 - Assign some value to the child object
 
-                mDatabase.child("Name").setValue(name);
+                mDatabase.push().setValue(name);
 
             }
         });

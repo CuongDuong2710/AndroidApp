@@ -1,5 +1,6 @@
 package in.android.cuong.firebasetutorials;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditName;
     private EditText mEditEmail;
     private Button mFireBasebtn;
+    private Button mGoTobtn;
 
     private String name = "";
     private String email = "";
@@ -36,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
         mEditName = (EditText) findViewById(R.id.edt_name);
         mEditEmail = (EditText) findViewById(R.id.edt_email);
         mFireBasebtn = (Button) findViewById(R.id.firebase_btn);
+        mGoTobtn = (Button) findViewById(R.id.btn_goto);
 
         // create instance of FirebaseDatabase connect "https://fir-tutorials-1d984.firebaseio.com/"
+        // remember change Rules of FirebaseDatabase-> ".write": "auth == null"
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mFireBasebtn.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // 1 - Create child in root object
                 // 2 - Assign some value to the child object
+                // 3 - Add onComplete listener
 
                 mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -67,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        mGoTobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, GetValueActivity.class);
+                startActivity(intent);
             }
         });
     }

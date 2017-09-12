@@ -37,5 +37,15 @@
         android:hint="Enter Your Email..."
         android:inputType="textEmailAddress|textEmailSubject" />
 
+    <Button
+        android:id="@+id/btn_goto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/firebase_btn"
+        android:layout_alignStart="@+id/firebase_btn"
+        android:layout_below="@+id/firebase_btn"
+        android:layout_marginTop="25dp"
+        android:text="Go To" />
+
 
 </RelativeLayout>

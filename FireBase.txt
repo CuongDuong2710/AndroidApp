@@ -1,0 +1,2 @@
+1. Add Firebase to your Android app in Android Studio
+

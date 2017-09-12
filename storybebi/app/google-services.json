@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "643484167713",
+    "firebase_url": "https://storybebi-179314.firebaseio.com",
+    "project_id": "storybebi-179314",
+    "storage_bucket": "storybebi-179314.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643484167713:android:3ffafc76ffda8ab3",
+        "android_client_info": {
+          "package_name": "youtube.storybebi.cuong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643484167713-jg69sqf5uf5re3o904gsr83rhu4jun5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youtube.storybebi.cuong",
+            "certificate_hash": "9f3f15c94aec86ce0fe6a25c37c4fd55c22b7101"
+          }
+        },
+        {
+          "client_id": "643484167713-o4kvg719odh7lac5p68sn9k6sg37j16r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZYSYLO05CKfVD-IckJJYAQUg3Jh8OZlU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643484167713-o4kvg719odh7lac5p68sn9k6sg37j16r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

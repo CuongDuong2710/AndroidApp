@@ -33,3 +33,6 @@ Album{name='Truyện cổ Grim', numOfVideos=7, imageUrl=https://goo.gl/GGtjsW}
 // Log value
 {numberOfMovies=15, movies=[{videoId=Pm5PGnPLJy8, lenght=10:30, title=Ba anh em}, {videoId=ZCyDhkODKjw, length=5:30, title=Anh chàng đánh trống}], imageUrl=https://goo.gl/GGtjsW, album=Truyện cổ tích}
 {numberOfMovies=7, imageUrl=https://goo.gl/GGtjsW, album=Truyện cổ Grim}
+
+// Data snapshot
+DataSnapshot { key = 0, value = {numberOfMovies=15, movies={0={videoId=Pm5PGnPLJy8, lenght=10:30, title=Ba anh em}, 1={videoId=ZCyDhkODKjw, length=5:30, title=Anh chàng đánh trống}}, imageUrl=https://goo.gl/GGtjsW, album=Truyện cổ tích} }

@@ -3,6 +3,7 @@ package youtube.storybebi.cuong;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -56,19 +57,30 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Album album = albumList.get(position);
+        // get album record and set title, count
+        final Album album = albumList.get(position);
         holder.title.setText(album.getName());
         holder.count.setText(album.getNumberOfMovies() + " movies");
 
         // loading album cover using Glide library
         Glide.with(mContext).load(album.getImageUrl()).into(holder.thumbnail);
 
+        // click on thumbnail and move to movies list
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ListMoviesActivity.class);
-                mContext.startActivity(intent);
+                if (album.getMovies() != null && album.getMovies().size() > 0) {
+                    Intent intent = new Intent(mContext, ListMoviesActivity.class);
+                    // create bundle to contain arraylist movies
+                    Bundle data = new Bundle();
+                    data.putSerializable("data", album.getMovies());
+                    intent.putExtra("movies", data);
+
+                    mContext.startActivity(intent);
+                } else {
+                    Toast.makeText(mContext, "None of movies", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

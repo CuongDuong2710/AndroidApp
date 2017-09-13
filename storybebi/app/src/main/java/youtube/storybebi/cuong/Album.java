@@ -1,5 +1,7 @@
 package youtube.storybebi.cuong;
 
+import java.util.ArrayList;
+
 /**
  * Created by Lincoln on 18/05/16.
  */
@@ -7,6 +9,7 @@ public class Album {
     private String name;
     private String imageUrl;
     private String numberOfMovies;
+    private ArrayList<Movie> movies = new ArrayList<>();
 
     public Album() {
     }
@@ -39,6 +42,14 @@ public class Album {
 
     public void setNumberOfMovies(String numberOfMovies) {
         this.numberOfMovies = numberOfMovies;
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(ArrayList<Movie> movies) {
+        this.movies = movies;
     }
 
     @Override

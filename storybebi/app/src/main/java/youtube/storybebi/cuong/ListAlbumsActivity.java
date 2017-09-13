@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -108,18 +109,29 @@ public class ListAlbumsActivity extends AppCompatActivity {
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                // get value
+                /*
+                "album": "Truyện cổ tích",
+                        "imageUrl": "https://goo.gl/GGtjsW",
+                        "movies": [
+                {
+                    "lenght": "10:30",
+                        "title": "Ba anh em",
+                        "videoId": "Pm5PGnPLJy8"
+                },
+                "numberOfMovies": "15"*/
                 HashMap<String, Object> value = (HashMap<String, Object>) dataSnapshot.getValue();
 
                 String title = (String) value.get("album");
                 String imageUrl = (String) value.get("imageUrl");
                 String numberOfMovies = String.valueOf(value.get("numberOfMovies"));
+                ArrayList<Movie> movies = (ArrayList<Movie>) value.get("movies");
 
                 Album album = new Album(title, numberOfMovies, imageUrl);
+                album.setMovies(movies);
                 albumList.add(album);
                 adapter.notifyDataSetChanged();
 
-//                Toast.makeText(ListAlbumsActivity.this, album.toString(), Toast.LENGTH_SHORT).show();
-//                Log.v("CuongDNQ", value.toString());
             }
 
             @Override
@@ -143,56 +155,6 @@ public class ListAlbumsActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * Adding few albums for testing
-     */
-//    private void prepareAlbums() {
-//        int[] covers = new int[]{
-//                R.drawable.album1,
-//                R.drawable.album2,
-//                R.drawable.album3,
-//                R.drawable.album4,
-//                R.drawable.album5,
-//                R.drawable.album6,
-//                R.drawable.album7,
-//                R.drawable.album8,
-//                R.drawable.album9,
-//                R.drawable.album10,
-//                R.drawable.album11};
-//
-//        Album a = new Album("True Romance", 13, covers[0]);
-//        albumList.add(a);
-//
-//        a = new Album("Xscpae", 8, covers[1]);
-//        albumList.add(a);
-//
-//        a = new Album("Maroon 5", 11, covers[2]);
-//        albumList.add(a);
-//
-//        a = new Album("Born to Die", 12, covers[3]);
-//        albumList.add(a);
-//
-//        a = new Album("Honeymoon", 14, covers[4]);
-//        albumList.add(a);
-//
-//        a = new Album("I Need a Doctor", 1, covers[5]);
-//        albumList.add(a);
-//
-//        a = new Album("Loud", 11, covers[6]);
-//        albumList.add(a);
-//
-//        a = new Album("Legend", 14, covers[7]);
-//        albumList.add(a);
-//
-//        a = new Album("Hello", 11, covers[8]);
-//        albumList.add(a);
-//
-//        a = new Album("Greatest Hits", 17, covers[9]);
-//        albumList.add(a);
-//
-//        adapter.notifyDataSetChanged();
-//    }
 
     /**
      * RecyclerView item decoration - give equal margin around grid item

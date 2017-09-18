@@ -29,6 +29,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_video) ImageView image;
         @BindView(R.id.title_video) TextView title;
+        @BindView(R.id.duration_video) TextView duration;
 
         public MyViewHolder(View view) {
             super(view);
@@ -68,13 +69,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         String lenght = String.valueOf(data.get("length"));
         String videoId = String.valueOf(data.get("videoId"));
         String imageUrl = String.valueOf(data.get("imageUrl"));
+        String description = String.valueOf(data.get("description"));
 
         // create new Movie
-        Movie movie = new Movie(imageUrl, title, videoId, lenght);
+        Movie movie = new Movie(imageUrl, title, videoId, lenght, description);
 
         // loading album cover using Glide library
         Glide.with(mContext).load(movie.getImage()).into(holder.image);
         holder.title.setText(movie.getTitle());
+        holder.duration.setText(movie.getLength());
     }
 
     @Override

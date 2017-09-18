@@ -1,8 +1,11 @@
 package youtube.storybebi.cuong;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -14,17 +17,27 @@ import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import org.sufficientlysecure.htmltextview.HtmlTextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+    @BindView(R.id.scrollview_content) ScrollView scrollView;
+    @BindView(R.id.txt_title_sv) TextView txt_title;
+    @BindView(R.id.txt_description) HtmlTextView txt_description;
 
     public static final String API_KEY = "AIzaSyCnA-6rmPWV--SGIN6Bept0_XJc8KxPG4I";
 
-    private TextView txt_title;
     private String videoId = "";
+    private String title = "";
+    private String description = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_video);
+        ButterKnife.bind(this);
 
         getData();
 
@@ -114,8 +127,13 @@ public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePla
         Intent intent = getIntent();
 
         Bundle data = intent.getBundleExtra("data");
-        String title = (String) data.get("title");
+        title = (String) data.get("title");
         videoId = (String) data.get("videoId");
+        description = (String) data.get("description");
 
+        txt_title.setText(title);
+        txt_description.setHtml(description);
+
+        txt_title.setTypeface(txt_title.getTypeface(), Typeface.BOLD);
     }
 }

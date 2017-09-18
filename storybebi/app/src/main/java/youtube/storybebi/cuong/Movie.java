@@ -11,12 +11,14 @@ public class Movie implements Serializable {
     private String title;
     private String videoId;
     private String length;
+    private String description;
 
-    public Movie(String image, String title, String videoId, String length) {
+    public Movie(String image, String title, String videoId, String length, String description) {
         this.image = image;
         this.title = title;
         this.videoId = videoId;
         this.length = length;
+        this.description = description;
     }
 
     public String getImage() {
@@ -49,5 +51,13 @@ public class Movie implements Serializable {
 
     public void setLength(String length) {
         this.length = length;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

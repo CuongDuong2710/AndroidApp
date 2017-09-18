@@ -47,11 +47,12 @@ public class ListMoviesActivity extends AppCompatActivity {
                 String lenght = String.valueOf(data.get("length"));
                 String videoId = String.valueOf(data.get("videoId"));
                 String imageUrl = String.valueOf(data.get("imageUrl"));
+                String description = String.valueOf(data.get("description"));
 
-                Movie movie = new Movie(imageUrl, title, videoId, lenght);
+                Movie movie = new Movie(imageUrl, title, videoId, lenght, description);
 
-                Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected", Toast.LENGTH_SHORT).show();
-                sendData(movie.getTitle(), movie.getVideoId());
+                Toast.makeText(getApplicationContext(), movie.getTitle(), Toast.LENGTH_SHORT).show();
+                sendData(movie.getTitle(), movie.getVideoId(), movie.getDescription());
             }
 
             @Override
@@ -86,39 +87,13 @@ public class ListMoviesActivity extends AppCompatActivity {
      * @param title
      * @param videoId
      */
-    private void sendData(String title, String videoId) {
+    private void sendData(String title, String videoId, String description) {
         Intent intent = new Intent(ListMoviesActivity.this, PlayVideoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("title", title );
         bundle.putString("videoId", videoId);
+        bundle.putString("description", description);
         intent.putExtra("data", bundle);
         startActivity(intent);
     }
-
-//    private void prepareMovieDate() {
-//        Movie movie = new Movie(R.drawable.around_the_world_eighty_days, "Anh chàng đánh trống", "ZCyDhkODKjw");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.david_copperfield, "Anh và em gái", "v5--09nEalQ");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.frankenstein, "Ba anh em", "Pm5PGnPLJy8");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.story_arion_and_dolphin, "Ba bà kéo sợi", "3-2c0b1u7s8");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Ba người lùn trong rừng", "cypnbgSVv20");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Hanxơ sắt", "wWdtrpHDiEc");
-//        movies.add(movie);
-//
-//        movie = new Movie(R.drawable.aladin_and_the_magic_lamp, "Gã thợ xay nghèo khó", "PJY50e9WYs4");
-//        movies.add(movie);
-//
-//        mAdapter.notifyDataSetChanged();
-//
-//    }
-
 }

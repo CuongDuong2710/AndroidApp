@@ -68,6 +68,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         String title = String.valueOf(data.get("title"));
         String lenght = String.valueOf(data.get("length"));
         String videoId = String.valueOf(data.get("videoId"));
+        //int position = videoUrl.lastIndexOf("/");
+        //videoUrl.substring(position + 1).trim())
         String imageUrl = String.valueOf(data.get("imageUrl"));
         String description = String.valueOf(data.get("description"));
 

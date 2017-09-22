@@ -71,11 +71,6 @@ https://play.google.com/store/apps/details?id=youtube.storybebi.cuong&ah=vsapEHb
 ID ứng dụng: ca-app-pub-2267083612728588~1486185458
 ID đơn vị quảng cáo: ca-app-pub-2267083612728588/6133498163
 
-Error:Execution failed for task ':app:processDebugGoogleServices'.
-> Please fix the version conflict either by updating the version of the google-services plugin (information about the latest version is available at https://bintray.com/android/android-tools/com.google.gms.google-services/) or updating the version of com.google.android.gms to 10.0.1.
-
-=> edit same version 'firebase', 'google-services' 10.0.1 or 11.0.4
-
 ====================================================================================
 ANDROID CONVENTION
 https://source.android.com/source/code-style

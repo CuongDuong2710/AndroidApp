@@ -27,9 +27,10 @@ styles.xml
 You want to expand and fill all the available space on the screen
 
 ===============================
-1. Icon trên màn hình
+1. Icon trên màn hình => ok
 2. Icon trên appstore
-3. Hình Love Movies
+3. Hình Love Movies => ok
 4. Tab tiếng Anh, tiếng Việt
-5. Màu line list movie
+5. Màu line list movie => ok
 6. Ads hiện cuối danh sách
+7. Description trên appstore

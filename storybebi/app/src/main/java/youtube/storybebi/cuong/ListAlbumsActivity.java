@@ -62,7 +62,7 @@ public class ListAlbumsActivity extends AppCompatActivity {
         getValueFromFirebase();
 
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.cover_story).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }

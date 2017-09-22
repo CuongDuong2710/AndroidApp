@@ -127,6 +127,13 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 // cast holder to MovieItemViewHolder
                 MovieItemViewHolder myViewHolder = (MovieItemViewHolder) holder;
 
+                // Change color item view
+                if (position % 2 != 0) {
+                    holder.itemView.setBackgroundResource(R.color.pastelcolor_odd);
+                } else {
+                    holder.itemView.setBackgroundResource(R.color.pastelcolor_even);
+                }
+
                 // get hashmap record
                 HashMap<String, Object> data = (HashMap<String, Object>) mRecyclerViewItems.get(position);
 

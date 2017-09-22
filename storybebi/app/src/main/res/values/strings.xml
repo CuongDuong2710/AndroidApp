@@ -6,4 +6,6 @@
     <string name="backdrop_title">STORIES BEBI</string>
     <string name="backdrop_subtitle">Thế giới cổ tích</string>
     <string name="banner_ad_unit_id">ca-app-pub-2267083612728588/6133498163</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

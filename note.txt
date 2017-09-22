@@ -34,3 +34,4 @@ You want to expand and fill all the available space on the screen
 5. Màu line list movie => ok
 6. Ads hiện cuối danh sách
 7. Description trên appstore
+8. Text trong video nên justify

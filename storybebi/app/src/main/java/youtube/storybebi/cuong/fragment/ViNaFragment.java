@@ -35,7 +35,7 @@ import youtube.storybebi.cuong.object.Movie;
  */
 
 public class ViNaFragment extends Fragment {
-    @BindView(R.id.vni_recycler_view) RecyclerView recyclerView;
+    @BindView(R.id.albums_recycler_view) RecyclerView recyclerView;
 
     private static final String TAG = "ViNaFragment";
 
@@ -47,7 +47,7 @@ public class ViNaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.vi_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.albums_fragment, container, false);
         ButterKnife.bind(this, rootView);
 
 
@@ -83,15 +83,18 @@ public class ViNaFragment extends Fragment {
                 "numberOfMovies": "15"*/
                 HashMap<String, Object> value = (HashMap<String, Object>) dataSnapshot.getValue();
 
-                String title = (String) value.get("album");
-                String imageUrl = (String) value.get("imageUrl");
-                String numberOfMovies = String.valueOf(value.get("numberOfMovies"));
-                ArrayList<Movie> movies = (ArrayList<Movie>) value.get("movies");
+                String language = (String) value.get("language");
+                if (language.equalsIgnoreCase("vni")) {
+                    String title = (String) value.get("album");
+                    String imageUrl = (String) value.get("imageUrl");
+                    String numberOfMovies = String.valueOf(value.get("numberOfMovies"));
+                    ArrayList<Movie> movies = (ArrayList<Movie>) value.get("movies");
 
-                Album album = new Album(title, numberOfMovies, imageUrl);
-                album.setMovies(movies);
-                albums.add(album);
-                adapter.notifyDataSetChanged();
+                    Album album = new Album(title, numberOfMovies, imageUrl);
+                    album.setMovies(movies);
+                    albums.add(album);
+                    adapter.notifyDataSetChanged();
+                }
             }
 
             @Override

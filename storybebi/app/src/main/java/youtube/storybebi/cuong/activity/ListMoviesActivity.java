@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +19,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import youtube.storybebi.cuong.DividerItemDecoration;
+import youtube.storybebi.cuong.object.Movie;
+import youtube.storybebi.cuong.R;
+import youtube.storybebi.cuong.RecyclerTouchListener;
+import youtube.storybebi.cuong.adapter.MovieAdapter;
 
 public class ListMoviesActivity extends AppCompatActivity {
     @BindView(R.id.list_video) RecyclerView recyclerView;

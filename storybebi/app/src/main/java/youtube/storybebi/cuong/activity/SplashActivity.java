@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.activity;
 
 import android.content.Intent;
 import android.os.Handler;

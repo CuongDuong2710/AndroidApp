@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

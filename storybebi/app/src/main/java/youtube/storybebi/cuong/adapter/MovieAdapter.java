@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +16,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import youtube.storybebi.cuong.object.Movie;
+import youtube.storybebi.cuong.R;
 
 /**
  * Created by QUOC CUONG on 31/08/2017.

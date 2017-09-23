@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.object;
 
 import java.io.Serializable;
 

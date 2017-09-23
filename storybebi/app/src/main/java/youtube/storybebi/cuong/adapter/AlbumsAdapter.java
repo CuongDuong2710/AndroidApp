@@ -1,6 +1,5 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +20,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import youtube.storybebi.cuong.object.Album;
+import youtube.storybebi.cuong.activity.ListMoviesActivity;
+import youtube.storybebi.cuong.R;
 
 /**
  * Created by Ravi Tamada on 18/05/16.

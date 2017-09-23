@@ -1,4 +1,4 @@
-package youtube.storybebi.cuong;
+package youtube.storybebi.cuong.activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -21,6 +21,7 @@ import org.sufficientlysecure.htmltextview.HtmlTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import youtube.storybebi.cuong.R;
 
 public class PlayVideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
     @BindView(R.id.scrollview_content) ScrollView scrollView;

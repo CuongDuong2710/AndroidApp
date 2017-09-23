@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ListAlbumsActivity"
+            android:name=".activity.ListAlbumsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".PlayVideoActivity" />
-        <activity android:name=".ListMoviesActivity"></activity>
+        <activity android:name=".activity.PlayVideoActivity" />
+        <activity android:name=".activity.ListMoviesActivity"></activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:theme="@style/SplashTheme">
 
             />
@@ -29,7 +29,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name=".TabbedActivity"
+            android:name=".activity.TabbedActivity"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

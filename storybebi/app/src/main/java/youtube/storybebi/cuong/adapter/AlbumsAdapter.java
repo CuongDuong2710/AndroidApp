@@ -36,7 +36,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         @BindView(R.id.title) TextView title;
         @BindView(R.id.count) TextView count;
         @BindView(R.id.thumbnail) ImageView thumbnail;
-        @BindView(R.id.overflow) ImageView overflow;
+//        @BindView(R.id.overflow) ImageView overflow;
 
         public MyViewHolder(View view) {
             super(view);
@@ -86,25 +86,25 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             }
         });
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.overflow);
-            }
-        });
+//        holder.overflow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showPopupMenu(holder.overflow);
+//            }
+//        });
     }
 
     /**
      * Showing popup menu when tapping on 3 dots
      */
-    private void showPopupMenu(View view) {
-        // inflate menu
-        PopupMenu popup = new PopupMenu(mContext, view);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_album, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
-        popup.show();
-    }
+//    private void showPopupMenu(View view) {
+//        // inflate menu
+//        PopupMenu popup = new PopupMenu(mContext, view);
+//        MenuInflater inflater = popup.getMenuInflater();
+//        inflater.inflate(R.menu.menu_album, popup.getMenu());
+//        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+//        popup.show();
+//    }
 
     /**
      * Click listener for popup menu items

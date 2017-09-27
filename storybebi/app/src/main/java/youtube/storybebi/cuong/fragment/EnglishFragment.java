@@ -12,12 +12,14 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +41,7 @@ public class EnglishFragment extends Fragment{
 
     private static final String TAG = "EngFragment";
 
-    private DatabaseReference mDatabase = null;
+    private DatabaseReference mDatabase, connectedRef = null;
 
     private AlbumsAdapter adapter = null;
     private List<Album> albums = new ArrayList<>();
@@ -65,6 +67,27 @@ public class EnglishFragment extends Fragment{
 
     private void getValueFromFireBase() {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("albums");
+        mDatabase.keepSynced(true); // data is going to be synced with real-time database at locally
+
+        connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean connected = dataSnapshot.getValue(Boolean.class);
+                if (connected) {
+
+                } else {
+                    if (getContext() != null) {
+                        Toast.makeText(getContext(), "Kết nối Wifi để xem video!", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override

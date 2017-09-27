@@ -8,11 +8,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/amazingkids_official_vn"
+        android:icon="@drawable/hi_res_storybebi"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/amazingkids_official_vn"
+        android:roundIcon="@drawable/hi_res_storybebi"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".StoryBeBi">
         <activity
             android:name=".activity.ListAlbumsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>

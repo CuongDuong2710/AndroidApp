@@ -33,7 +33,7 @@ public class TabbedActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-        mSectionsPageAdapter.addFragment(new ViNaFragment(), "VietNamese");
+        mSectionsPageAdapter.addFragment(new ViNaFragment(), "Tiếng Việt");
         mSectionsPageAdapter.addFragment(new EnglishFragment(), "English");
         viewPager.setAdapter(mSectionsPageAdapter);
     }

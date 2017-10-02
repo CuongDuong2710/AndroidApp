@@ -1,0 +1,84 @@
+Activity
+Intent
+Fragment
+Service
+Broadcast receiver
+
+1. What is Android?
+_ Android is open source operating system and it is based on Linux kernel
+
+2. What is an Intent? **
+_ Messaging object if you try to pop some data from one screen to another screen, go from this screen to another screen
+_ Two type: explicit and implicit
++ Explicit: specify target component.
++ Implicit: don't specify target component, it chooses what is the action that has to happen (send message, call, open url...)
+
+3. What is ANR? (Application not responding)
+_ When you try to run long processor on your Android operating system on your main thread, you will not be able to get the responses back.
+
+4. What is orentiation?
+_ Portrait and landscape
+
+5. What is ADB?
+_ Android debug bridge has it own command adb shell, ex: start/kill emulator, start activity, list devices...
+
+6. What does Android Architecture consits of? **
+_ Mainly four layers
+a. Android application
+b. Android framework (activity manager, window manager)
+c. Android library
+d. Linux kernel 
+
+7. What is the difference between Activity and Service? **
+_ Activity is visible to the user, always been in the foreground.
+_ Service would be running in the background for a very long time, which helps you run a long process.
+
+8. What is Manifest file? **
+_ Declaring all your permissions whether you want to access (location, camera, internet, wifi...)
+_ Declaring all your services
+_ Declaring all your activities
+
+9. What is the lifecycle of an activity? **
+_ Six methods:
+a. OnCreate -> called only once but when user changed orientation OnCreate() will be called again.
+b. OnStart
+c. OnResume
+d. OnPause
+e. OnStop
+f. OnDestroy
+
+10. What is APK?
+_ Consists of all your resources
+
+11. What is a Fragment? **
+_ Fragment is nothing but a sub activity, there can be multiple fragments in an activity. Same fragments for many activites.
+_ Don't declare in your manifest.
+
+12. What is ADT and AVD?
+_ Android Development Tools (ADT).
+_ Android Virtual Devices (AVD) is your device.
+
+13. How do you handle orientation for an input box?
+_ Save instance
+
+14. What is the difference between layouts and containers?
+_ Layout has no requirement on the kind of childrens
+_ Containers would be consisting of an object, strong requirement how the children has been organized inside.
+
+15. What is broadcast receiver?
+_ Helps us to communicate between the Android operating system and the application (notifications, battery is low...)
+
+16. How do you sign an APK?
+_ Have specific keystore and password
+
+17. Can I change the package name?
+_ Yes, but you can not update the app on PlayStore. You must have the same credentials and the same package name.
+
+18. How do you put your apps in Google Play Store?
+_ Account developer 22$.
+
+19. Questions based on Google Maps and push notifications. **
+
+20. Questions on Core Java (inheritance, polymorphism, constructor, public...) **
+
+

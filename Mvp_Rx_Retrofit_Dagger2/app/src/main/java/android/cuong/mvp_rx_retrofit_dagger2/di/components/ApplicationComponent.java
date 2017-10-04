@@ -13,5 +13,5 @@ import dagger.Component;
  */
 @Singleton
 @Component(modules = ApplicationModule.class)
-public class ApplicationComponent {
+public interface ApplicationComponent {
 }

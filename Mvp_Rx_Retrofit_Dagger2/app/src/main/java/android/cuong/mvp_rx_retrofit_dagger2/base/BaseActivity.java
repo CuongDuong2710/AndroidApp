@@ -1,4 +1,4 @@
-package android.cuong.mvp_rx_retrofit_dagger2;
+package android.cuong.mvp_rx_retrofit_dagger2.base;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

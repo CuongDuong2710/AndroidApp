@@ -27,7 +27,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @CallSuper
     protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        resolveDaggerDependency();
         // To be used by child activities
+    }
+
+    protected void resolveDaggerDependency() {
     }
 
     protected void showDialog(String message) {

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -24,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getContentView();
 
+    @CallSuper
     protected void onViewReady(Bundle savedInstanceState, Intent intent) {
         // To be used by child activities
     }

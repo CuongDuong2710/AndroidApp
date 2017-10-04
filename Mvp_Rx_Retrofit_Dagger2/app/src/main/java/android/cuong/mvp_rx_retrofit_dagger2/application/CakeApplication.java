@@ -17,7 +17,7 @@ public class CakeApplication extends Application {
     }
 
     private void initializeApplicationComponent() {
-        DaggerApplicationComponent.builder();
+        DaggerApplicationComponent.builder.create();
     }
 
     @Override

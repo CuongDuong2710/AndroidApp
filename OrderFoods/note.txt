@@ -1,0 +1,4 @@
+1. Create data JSON
+http://www.objgen.com/json
+
+2. Install plugin "Android Drawable Importer"

@@ -1,23 +1,57 @@
 package android.cuong.facebooklogin;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 
 public class MainActivity extends AppCompatActivity {
+
+    private LoginButton loginButton;
+    private TextView textView;
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Call sdkInitialize before setContentView
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_main);
 
+        loginButton = (LoginButton) findViewById(R.id.fb_login_btn);
+        textView = (TextView) findViewById(R.id.text_status);
+        callbackManager = CallbackManager.Factory.create();
+
+        // Register callback
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                textView.setText("Login Success \n" +
+                        loginResult.getAccessToken().getUserId() +
+                        "\n" + loginResult.getAccessToken().getToken());
+            }
+
+            @Override
+            public void onCancel() {
+                textView.setText("Login Cancelled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+        /* Get keyhash
         try {
             PackageInfo info = getPackageManager().getPackageInfo("android.cuong.facebooklogin",
                     PackageManager.GET_SIGNATURES);
@@ -30,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        }
+        }*/
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

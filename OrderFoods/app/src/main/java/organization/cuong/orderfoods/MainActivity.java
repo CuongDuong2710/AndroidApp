@@ -1,5 +1,6 @@
 package organization.cuong.orderfoods;
 
+import android.content.Intent;
 import android.cuong.orderfoods.R;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent signIn = new Intent(MainActivity.this, SignIn.class);
+                startActivity(signIn);
             }
         });
     }

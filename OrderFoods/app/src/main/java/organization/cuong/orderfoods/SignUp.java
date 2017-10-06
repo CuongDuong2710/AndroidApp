@@ -19,63 +19,44 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import organization.cuong.orderfoods.model.User;
 
-/**
- * Checking when user sign in app
- */
-public class SignIn extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
     @BindView(R.id.edtPhone) MaterialEditText edtPhone;
+    @BindView(R.id.edtName) MaterialEditText edtName;
     @BindView(R.id.edtPassword) MaterialEditText edtPassword;
-    @BindView(R.id.btnSignIn) Button btnSignIn;
+    @BindView(R.id.btnSignUp) Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
         // Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-       /* User
-            0933102165
-                Name:
-                "Chirs"
-                Password:
-                "123"
-        */
         final DatabaseReference table_user = database.getReference("User");
 
-        // listener when user presses Sign in button
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // show diaglog
-                final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
+                final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();
 
-                // Get User information
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        // Check if user exists in database
-                        if (dataSnapshot.child(edtPhone.getText().toString().trim()).exists()) {
-                            // dismiss dialog
+                        // Check if user phone have exists
+                        if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                             mDialog.dismiss();
-                            // get user
-                            User user = dataSnapshot.child(edtPhone.getText().toString().trim()).getValue(User.class);
-
-                            // Check password
-                            if (user.getPassword().equalsIgnoreCase(edtPassword.getText().toString())) {
-                                Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(SignIn.this, "Wrong password!", Toast.LENGTH_SHORT).show();
-                            }
+                            Toast.makeText(SignUp.this, "Phone number already register", Toast.LENGTH_SHORT).show();
                         } else {
                             mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User not exist!", Toast.LENGTH_SHORT).show();
+                            User user = new User(edtName.getText().toString().trim(), edtPassword.getText().toString().trim());
+                            table_user.child(edtPhone.getText().toString().trim()).setValue(user);
+                            Toast.makeText(SignUp.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
 

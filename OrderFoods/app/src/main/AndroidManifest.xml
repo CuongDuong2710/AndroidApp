@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="organization.cuong.orderfoods.SignIn"></activity>
+        <activity android:name="organization.cuong.orderfoods.SignIn" />
+        <activity android:name="organization.cuong.orderfoods.SignUp"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package android.cuong.orderfoods;
+package organization.cuong.orderfoods;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

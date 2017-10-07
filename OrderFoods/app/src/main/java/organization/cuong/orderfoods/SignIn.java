@@ -18,8 +18,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import organization.cuong.orderfoods.common.Common;
-import organization.cuong.orderfoods.model.User;
+import organization.cuong.orderfoods.Common.Common;
+import organization.cuong.orderfoods.Model.User;
 
 /**
  * Checking when user sign in app

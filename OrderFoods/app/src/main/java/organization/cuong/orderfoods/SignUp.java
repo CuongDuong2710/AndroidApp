@@ -17,7 +17,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import organization.cuong.orderfoods.model.User;
+import organization.cuong.orderfoods.Model.User;
 
 /**
  * Checking when user sign up

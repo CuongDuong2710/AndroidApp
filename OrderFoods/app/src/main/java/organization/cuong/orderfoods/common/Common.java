@@ -1,6 +1,6 @@
-package organization.cuong.orderfoods.common;
+package organization.cuong.orderfoods.Common;
 
-import organization.cuong.orderfoods.model.User;
+import organization.cuong.orderfoods.Model.User;
 
 /**
  * Created by QUOC CUONG on 07/10/2017.

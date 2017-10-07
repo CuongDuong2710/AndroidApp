@@ -1,4 +1,4 @@
-package organization.cuong.orderfoods.model;
+package organization.cuong.orderfoods.Model;
 
 /**
  * Created by QUOC CUONG on 07/10/2017.

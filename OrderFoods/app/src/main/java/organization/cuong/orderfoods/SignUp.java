@@ -19,6 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import organization.cuong.orderfoods.model.User;
 
+/**
+ * Checking when user sign up
+ */
 public class SignUp extends AppCompatActivity {
     @BindView(R.id.edtPhone) MaterialEditText edtPhone;
     @BindView(R.id.edtName) MaterialEditText edtName;

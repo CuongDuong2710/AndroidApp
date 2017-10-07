@@ -1,6 +1,7 @@
 package organization.cuong.orderfoods;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.cuong.orderfoods.R;
@@ -17,6 +18,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import organization.cuong.orderfoods.common.Common;
 import organization.cuong.orderfoods.model.User;
 
 /**
@@ -69,7 +71,10 @@ public class SignIn extends AppCompatActivity {
 
                             // Check password
                             if (user.getPassword().equalsIgnoreCase(edtPassword.getText().toString())) {
-                                Toast.makeText(SignIn.this, "Sign in successfully!", Toast.LENGTH_SHORT).show();
+                                Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                Common.currentUser = user;
+                                startActivity(homeIntent);
+                                finish();
                             } else {
                                 Toast.makeText(SignIn.this, "Wrong password!", Toast.LENGTH_SHORT).show();
                             }

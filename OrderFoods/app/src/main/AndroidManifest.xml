@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name="organization.cuong.orderfoods.SignIn" />
-        <activity android:name="organization.cuong.orderfoods.SignUp"></activity>
+        <activity android:name="organization.cuong.orderfoods.SignUp" />
+        <activity
+            android:name="organization.cuong.orderfoods.Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

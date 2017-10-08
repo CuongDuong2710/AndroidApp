@@ -1,5 +1,6 @@
 package organization.cuong.orderfoods;
 
+import android.content.Intent;
 import android.cuong.orderfoods.R;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +31,9 @@ import organization.cuong.orderfoods.Interface.ItemClickListener;
 import organization.cuong.orderfoods.Model.Category;
 import organization.cuong.orderfoods.ViewHolder.MenuViewHolder;
 
+/**
+ * Loading menu category list
+ */
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private TextView txtFullName;
@@ -40,7 +43,11 @@ public class Home extends AppCompatActivity
     FirebaseDatabase database = null;
     DatabaseReference category = null;
 
+    // Declare layout manager
     RecyclerView.LayoutManager layoutManager = null;
+
+    // Declare adapter to binding data for category menu
+    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +102,8 @@ public class Home extends AppCompatActivity
      * Using Firebase UI to load category menu data
      */
     private void loadMenu() {
-        FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
+        // setting FireBaseRecyclerAdapter(model class, layoutId, viewHolder, data)
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
                 // set category name
@@ -109,7 +117,11 @@ public class Home extends AppCompatActivity
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(Home.this, "" + categoryItem.getName(), Toast.LENGTH_SHORT).show();
+                        // Get CategoryId and send to FoodList
+                        Intent foodList = new Intent(Home.this, FoodList.class);
+                        // CategoryId is key
+                        foodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        startActivity(foodList);
                     }
                 });
             }

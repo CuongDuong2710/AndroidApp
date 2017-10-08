@@ -2,6 +2,7 @@ package organization.cuong.orderfoods.Model;
 
 /**
  * Created by QUOC CUONG on 07/10/2017.
+ * Defining Category data structure
  */
 
 public class Category {

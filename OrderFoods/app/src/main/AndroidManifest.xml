@@ -21,7 +21,8 @@
         <activity
             android:name="organization.cuong.orderfoods.Home"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name="organization.cuong.orderfoods.FoodList"></activity>
     </application>
 
 </manifest>

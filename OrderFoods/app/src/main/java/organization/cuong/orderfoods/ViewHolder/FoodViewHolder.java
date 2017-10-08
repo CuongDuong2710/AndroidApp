@@ -9,21 +9,22 @@ import android.widget.TextView;
 import organization.cuong.orderfoods.Interface.ItemClickListener;
 
 /**
- * Created by QUOC CUONG on 07/10/2017.
- * Building item on Category Menu
+ * Created by QUOC CUONG on 08/10/2017.
+ * Building item on Food List
  */
 
-public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-    public TextView txtMenuName;
-    public ImageView imageMenu;
+public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    public TextView foodName;
+    public ImageView foodImage;
 
     private ItemClickListener itemClickListener;
 
-    public MenuViewHolder(View itemView) {
+    public FoodViewHolder(View itemView) {
         super(itemView);
 
-        txtMenuName = itemView.findViewById(R.id.menu_name);
-        imageMenu = itemView.findViewById(R.id.menu_image);
+        foodName = itemView.findViewById(R.id.food_name);
+        foodImage = itemView.findViewById(R.id.food_image);
 
         itemView.setOnClickListener(this);
     }

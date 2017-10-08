@@ -16,3 +16,12 @@ Firebase -> Database -> Rules
     }
   }
 }
+
+4. Handle scrolling with CoordinatorLayout
+
+https://guides.codepath.com/android/Handling-Scrolls-with-CoordinatorLayout
+https://stackoverflow.com/questions/35286582/material-design-layout-scrollflags-meanings
+
+enterAlways| enterAlwaysCollapsed| exitUntilCollapsed| snap
+
+5. LinearLayout has orientation is 'horizontal' so we can set layout_weigth='1', layout_width='0dp'

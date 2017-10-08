@@ -1,5 +1,6 @@
 package organization.cuong.orderfoods;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.cuong.orderfoods.R;
@@ -81,7 +82,10 @@ public class FoodList extends AppCompatActivity {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(FoodList.this, "" + currentFoodItem.getName(), Toast.LENGTH_SHORT).show();
+                        // send FoodId to FoodDetail
+                        Intent foodDetail = new Intent(FoodList.this, FoodDetail.class);
+                        foodDetail.putExtra("FoodId", adapter.getRef(position).getKey());
+                        startActivity(foodDetail);
                     }
                 });
             }

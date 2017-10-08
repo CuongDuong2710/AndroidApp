@@ -119,7 +119,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginBottom="8dp"
-                        app:textSize="8sp"
+                        app:textSize="5sp"
                         app:backGroundColor="@color/colorAccent"
                         app:initialNumber="1"
                         app:finalNumber="20"/>

@@ -2,3 +2,17 @@
 http://www.objgen.com/json
 
 2. Install plugin "Android Drawable Importer"
+
+3.  W/PersistentConnection: pc_0 - Using an unspecified index. Consider adding '".indexOn": "MenuId"' at Foods to your security and Firebase Database rules for better performance
+
+Firebase -> Database -> Rules
+
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "Foods": {
+      ".indexOn":["MenuId"]
+    }
+  }
+}

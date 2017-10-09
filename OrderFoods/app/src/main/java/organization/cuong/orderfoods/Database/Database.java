@@ -38,7 +38,7 @@ public class Database extends SQLiteAssetHelper {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
         // select column and table
-        String[] sqlSelect = {"ProductName", "ProductId", "Quantity", "Price", "Discount"};
+        String[] sqlSelect = {"ProductId", "ProductName", "Quantity", "Price", "Discount"};
         String table = "OrderDetail";
 
         // set table for QueryBuilder

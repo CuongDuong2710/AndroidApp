@@ -24,7 +24,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name="organization.cuong.orderfoods.FoodList" />
         <activity android:name="organization.cuong.orderfoods.FoodDetail" />
-        <activity android:name="organization.cuong.orderfoods.Card"></activity>
+        <activity android:name="organization.cuong.orderfoods.Cart"></activity>
     </application>
 
 </manifest>

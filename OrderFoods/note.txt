@@ -25,3 +25,13 @@ https://stackoverflow.com/questions/35286582/material-design-layout-scrollflags-
 enterAlways| enterAlwaysCollapsed| exitUntilCollapsed| snap
 
 5. LinearLayout has orientation is 'horizontal' so we can set layout_weigth='1', layout_width='0dp'
+
+6. Make sure you have copy Database to Assets/databases/ , and please uninstall - reinstall app from Emulator after made some changes with Databases (or change Database version)﻿
+
+7. TextDrawable for TextView and set for ImageView
+
+String quantity = listData.get(position).getQuantity();
+
+TextDrawable drawable = TextDrawable.builder()
+                .buildRound("" + quantity, Color.RED);
+holder.img_cart_count.setImageDrawable(drawable);

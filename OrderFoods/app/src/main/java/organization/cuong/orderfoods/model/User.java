@@ -2,6 +2,7 @@ package organization.cuong.orderfoods.Model;
 
 /**
  * Created by QUOC CUONG on 06/10/2017.
+ * Defining user data structure
  */
 
 public class User {

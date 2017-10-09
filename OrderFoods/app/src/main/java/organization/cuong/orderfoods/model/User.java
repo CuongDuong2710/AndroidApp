@@ -8,13 +8,23 @@ public class User {
     // need same Case with firebase name
     private String Name;
     private String Password;
+    private String Phone;
 
     public User() {
     }
 
-    public User(String name, String password) {
-        this.Name = name;
-        this.Password = password;
+    public User(String name, String password, String phone) {
+        Name = name;
+        Password = password;
+        Phone = phone;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
     public String getName() {

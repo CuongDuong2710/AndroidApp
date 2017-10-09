@@ -68,6 +68,8 @@ public class SignIn extends AppCompatActivity {
                             mDialog.dismiss();
                             // get user
                             User user = dataSnapshot.child(edtPhone.getText().toString().trim()).getValue(User.class);
+                            // set phone for user
+                            user.setPhone(edtPhone.getText().toString().trim());
 
                             // Check password
                             if (user.getPassword().equalsIgnoreCase(edtPassword.getText().toString())) {

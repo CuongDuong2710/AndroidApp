@@ -5,8 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.cuong.orderfoods.R;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +20,9 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import organization.cuong.orderfoods.Database.Database;
 import organization.cuong.orderfoods.Model.Food;
+import organization.cuong.orderfoods.Model.Order;
 
 public class FoodDetail extends AppCompatActivity {
     @BindView(R.id.img_food) ImageView food_image;
@@ -29,7 +33,10 @@ public class FoodDetail extends AppCompatActivity {
     @BindView(R.id.btnCart) FloatingActionButton btnCart;
     @BindView(R.id.number_button) ElegantNumberButton numberButton;
 
+    // getting foodId from FoodList
     String foodId = "";
+    // setting current food
+    Food currentFood = null;
 
     FirebaseDatabase database = null;
     DatabaseReference foods = null;
@@ -56,6 +63,28 @@ public class FoodDetail extends AppCompatActivity {
         if (!foodId.isEmpty()) {
             getDetailFood(foodId);
         }
+
+        // adding to card
+        addToCart();
+    }
+
+    /**
+     * adding to card
+     */
+    private void addToCart() {
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Database(getBaseContext()).addToCart(new Order(
+                        foodId,
+                        currentFood.getName(),
+                        numberButton.getNumber(),
+                        currentFood.getPrice(),
+                        currentFood.getDiscount()
+                ));
+                Toast.makeText(FoodDetail.this, "Added to Card", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
@@ -66,17 +95,17 @@ public class FoodDetail extends AppCompatActivity {
         foods.child(foodId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Food food = dataSnapshot.getValue(Food.class);
+                currentFood = dataSnapshot.getValue(Food.class);
 
                 // setting image
-                Picasso.with(getBaseContext()).load(food.getImage())
+                Picasso.with(getBaseContext()).load(currentFood.getImage())
                         .into(food_image);
 
                 // setting components
-                collapsingToolbarLayout.setTitle(food.getName());
-                food_name.setText(food.getName());
-                food_price.setText(food.getPrice());
-                food_description.setText(food.getDescription());
+                collapsingToolbarLayout.setTitle(currentFood.getName());
+                food_name.setText(currentFood.getName());
+                food_price.setText(currentFood.getPrice());
+                food_description.setText(currentFood.getDescription());
             }
 
             @Override

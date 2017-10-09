@@ -23,7 +23,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity android:name="organization.cuong.orderfoods.FoodList" />
-        <activity android:name="organization.cuong.orderfoods.FoodDetail"></activity>
+        <activity android:name="organization.cuong.orderfoods.FoodDetail" />
+        <activity android:name="organization.cuong.orderfoods.Card"></activity>
     </application>
 
 </manifest>

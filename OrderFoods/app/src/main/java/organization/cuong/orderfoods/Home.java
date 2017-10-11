@@ -29,6 +29,7 @@ import butterknife.ButterKnife;
 import organization.cuong.orderfoods.Common.Common;
 import organization.cuong.orderfoods.Interface.ItemClickListener;
 import organization.cuong.orderfoods.Model.Category;
+import organization.cuong.orderfoods.Model.Order;
 import organization.cuong.orderfoods.ViewHolder.MenuViewHolder;
 
 /**
@@ -95,6 +96,7 @@ public class Home extends AppCompatActivity
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
+        // loading category menu
         loadMenu();
     }
 
@@ -156,6 +158,11 @@ public class Home extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Handling when clicking menu
+     * @param item
+     * @return
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -163,13 +170,20 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_menu) {
-            // Handle the camera action
+            // Handle the menu action
         } else if (id == R.id.nav_cart) {
-
+            // Handle the card action
+            Intent cartIntent = new Intent(Home.this, Cart.class);
+            startActivity(cartIntent);
         } else if (id == R.id.nav_orders) {
-
+            // Handle the orders action
+            Intent orderIntent = new Intent(Home.this, OrderStatus.class);
+            startActivity(orderIntent);
         } else if (id == R.id.nav_logout) {
-
+            // Logout
+            Intent signIn = new Intent(Home.this, SignIn.class);
+            signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signIn);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -550,25 +550,25 @@
     }
   },
   "User" : {
+    "0933" : {
+      "IsStaff" : "true",
+      "Name" : "Marco",
+      "Password" : "1234"
+    },
     "0988123344" : {
+      "IsStaff" : "false",
       "Name" : "Eddydn",
-      "Password" : "1234",
-	  "IsStaff": false
+      "Password" : "1234"
     },
     "0988123355" : {
+      "IsStaff" : "false",
       "Name" : "EddyLEe",
-      "Password" : "1234",
-	  "IsStaff": false
+      "Password" : "1234"
     },
     "0988123388" : {
+      "IsStaff" : "false",
       "name" : "Tom Cruise",
-      "password" : "1234",
-	  "IsStaff": false
-    },
-    "0933" : {
-      "name" : "Marco",
-      "password" : "1234",
-	  "IsStaff": true
+      "password" : "1234"
     }
   }
 }

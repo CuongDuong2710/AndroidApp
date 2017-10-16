@@ -1,6 +1,7 @@
 package organization.cuong.orderfoodsserver;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import info.hoang8f.widget.FButton;
+import organization.cuong.orderfoodsserver.Common.Common;
 import organization.cuong.orderfoodsserver.Model.User;
 
 public class SignIn extends AppCompatActivity {
@@ -77,6 +79,10 @@ public class SignIn extends AppCompatActivity {
                         // check password
                         if(user.getPassword().equals(password)) {
                             // Login ok
+                            Intent homeIntent = new Intent(SignIn.this, Home.class);
+                            Common.currentUser = user;
+                            startActivity(homeIntent);
+                            finish();
                         } else {
                             Toast.makeText(SignIn.this, "Wrong pass!", Toast.LENGTH_SHORT).show();
                         }

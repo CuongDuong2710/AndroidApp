@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
                         .into(viewHolder.imgCategory);
                 // get current category item
                 final Category currentItem = model;
-                viewHolder.setItemClickListener(new ItemClickListener() {
+                viewHolder.imgCategory.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
+                    public void onClick(View view) {
                         Toast.makeText(MainActivity.this, "" + currentItem.getName(), Toast.LENGTH_SHORT).show();
                     }
                 });

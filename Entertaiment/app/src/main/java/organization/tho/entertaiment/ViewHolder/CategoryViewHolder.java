@@ -14,11 +14,9 @@ import organization.tho.entertaiment.R;
  * Buidling item on Category menu
  */
 
-public class CategoryViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
+public class CategoryViewHolder extends RecyclerView.ViewHolder{
     public TextView txtCategoryName;
     public ImageView imgCategory;
-
-    private ItemClickListener itemClickListener;
 
     public CategoryViewHolder(View itemView) {
         super(itemView);
@@ -26,15 +24,5 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder implements OnCli
         txtCategoryName = itemView.findViewById(R.id.title);
         imgCategory = itemView.findViewById(R.id.thumbnail);
 
-        itemView.setOnClickListener(this);
-    }
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
-
-    @Override
-    public void onClick(View view) {
-        itemClickListener.onClick(view, getAdapterPosition(), false);
     }
 }

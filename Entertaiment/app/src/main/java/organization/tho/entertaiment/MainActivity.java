@@ -2,13 +2,17 @@ package organization.tho.entertaiment;
 
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -27,6 +31,10 @@ import organization.tho.entertaiment.ViewHolder.CategoryViewHolder;
  */
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view_category) RecyclerView mRecyclerViewCategory;
+    @BindView(R.id.appbar) AppBarLayout mAppBarLayout;
+    @BindView(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
+    @BindView(R.id.toolbar) Toolbar mToolBar;
+    @BindView(R.id.backdrop) ImageView mBackDrop;
 
     // Declaring Firebase variables
     FirebaseDatabase database = null;
@@ -38,8 +46,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.list_category_coordinator);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolBar);
+
+        // init collapsing toolbar
+        initCollapsingToolbar();
 
         // setting recycler view layout
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
@@ -54,6 +67,50 @@ public class MainActivity extends AppCompatActivity {
         // loading category
         loadCategory();
 
+        // loading image Back drop
+        loadBackDrop();
+    }
+
+    /**
+     * Loading image Back drop
+     */
+    private void loadBackDrop() {
+        try {
+            Picasso.with(getBaseContext()).load(R.drawable.comic).into(mBackDrop);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Initializing collapsing toolbar
+     * Will show and hide the toolbar title on scroll
+     */
+    private void initCollapsingToolbar() {
+        mCollapsingToolbarLayout.setTitle(" ");
+        mAppBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = mAppBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    // collapsed toolbar and showing title
+                    mCollapsingToolbarLayout.setTitle(getString(R.string.app_name));
+                    isShow = true;
+                } else if (isShow) {
+                    // expanded toolbar
+                    mCollapsingToolbarLayout.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
     }
 
     /**

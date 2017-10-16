@@ -9,12 +9,31 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Toast;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import organization.tho.entertaiment.Listener.ItemClickListener;
+import organization.tho.entertaiment.Model.Category;
+import organization.tho.entertaiment.ViewHolder.CategoryViewHolder;
 
+/**
+ * Loading category menu screen
+ */
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recycler_view_category) RecyclerView mRecyclerViewCategory;
+
+    // Declaring Firebase variables
+    FirebaseDatabase database = null;
+    DatabaseReference category = null;
+
+    // Declaring adapter to binding data for category menu
+    FirebaseRecyclerAdapter<Category, CategoryViewHolder> adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +41,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        // setting recyclerview layout
+        // setting recycler view layout
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerViewCategory.setLayoutManager(mLayoutManager);
         mRecyclerViewCategory.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         mRecyclerViewCategory.setItemAnimator(new DefaultItemAnimator());
 
+        // init firebase
+        database = FirebaseDatabase.getInstance();
+        category = database.getReference("Category");
+
+        // loading category
+        loadCategory();
+
+    }
+
+    /**
+     * Loading category data by Firebase UI
+     */
+    private void loadCategory() {
+        // setting adapter
+        adapter = new FirebaseRecyclerAdapter<Category, CategoryViewHolder>(Category.class,
+                        R.layout.category_card,
+                        CategoryViewHolder.class,
+                        category) {
+            @Override
+            protected void populateViewHolder(CategoryViewHolder viewHolder, Category model, int position) {
+                // set category name
+                viewHolder.txtCategoryName.setText(model.getName());
+                // set category image
+                Picasso.with(getBaseContext()).load(model.getImage())
+                        .into(viewHolder.imgCategory);
+                // get current category item
+                final Category currentItem = model;
+                viewHolder.setItemClickListener(new ItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        Toast.makeText(MainActivity.this, "" + currentItem.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+        // after setting adapter, binding to recycler view
+        mRecyclerViewCategory.setAdapter(adapter);
     }
 
     /**

@@ -1,6 +1,7 @@
 package organization.tho.entertaiment;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -101,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     // collapsed toolbar and showing title
-                    mCollapsingToolbarLayout.setTitle(getString(R.string.app_name));
+                    mCollapsingToolbarLayout.setTitle("Category");
+                    mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
                     isShow = true;
                 } else if (isShow) {
                     // expanded toolbar

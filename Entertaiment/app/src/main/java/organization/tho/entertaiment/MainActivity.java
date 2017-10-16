@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import organization.tho.entertaiment.Listener.ItemClickListener;
 import organization.tho.entertaiment.Model.Category;
 import organization.tho.entertaiment.ViewHolder.CategoryViewHolder;
 

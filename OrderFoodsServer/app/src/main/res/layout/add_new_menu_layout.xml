@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/colorPrimary"
-            android:text="0933"
             android:textColor="@color/colorPrimary"
             android:textSize="34sp"
             android:inputType="text"

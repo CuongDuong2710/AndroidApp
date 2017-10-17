@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import organization.tho.entertaiment.Common.Constants;
+import organization.tho.entertaiment.Common.DatabaseEntertainment;
 import organization.tho.entertaiment.GridSpacingItemDecoration;
 import organization.tho.entertaiment.Model.Video;
 import organization.tho.entertaiment.R;
@@ -37,9 +39,6 @@ public class GeneralFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // General ID
-    private static final String GENERAL_ID = "05";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -101,44 +100,16 @@ public class GeneralFragment extends Fragment {
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(2), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        // init Firebase
-        database = FirebaseDatabase.getInstance();
-        video = database.getReference("Video");
+        // init DatabaseEntertainment
+        DatabaseEntertainment database = new DatabaseEntertainment();
 
-        // load video General
-        loadVideo();
+        // set adapter
+        adapter = database.loadVideo(getContext(), Constants.GENERAL);
 
-        return rootView;
-    }
-
-    /**
-     * Loading video General
-     */
-    private void loadVideo() {
-        // setting adapter
-        adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
-                        R.layout.category_card,
-                        VideoViewHolder.class,
-                        video.orderByChild("CategoryId").equalTo(GENERAL_ID)) {
-            @Override
-            protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
-                // set video title
-                viewHolder.txtTitle.setText(model.getTitle());
-                // set image
-                Picasso.with(getContext()).load(model.getImage())
-                        .into(viewHolder.imgVideo);
-                final Video currentVideo = model;
-                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(getContext(), "" + currentVideo.getTitle(),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        };
         // after setting adapter, binding to recycler view
         recyclerView.setAdapter(adapter);
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

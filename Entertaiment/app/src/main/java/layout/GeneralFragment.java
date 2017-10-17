@@ -1,14 +1,28 @@
 package layout;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import organization.tho.entertaiment.GridSpacingItemDecoration;
+import organization.tho.entertaiment.Model.Video;
 import organization.tho.entertaiment.R;
+import organization.tho.entertaiment.ViewHolder.VideoViewHolder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,11 +38,24 @@ public class GeneralFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    // General ID
+    private static final String GENERAL_ID = "05";
+
     // TODO: Rename and change types of parameters
     private String mParam1;
+
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    // declare Recycler view
+    RecyclerView recyclerView = null;
+
+    // declare Firebase Database
+    FirebaseDatabase database = null;
+    DatabaseReference video = null;
+
+    FirebaseRecyclerAdapter<Video, VideoViewHolder> adapter = null;
 
     public GeneralFragment() {
         // Required empty public constructor
@@ -65,7 +92,53 @@ public class GeneralFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_general, container, false);
+
+        recyclerView = rootView.findViewById(R.id.recycler_view_general);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(2), true));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        // init Firebase
+        database = FirebaseDatabase.getInstance();
+        video = database.getReference("Video");
+
+        // load video General
+        loadVideo();
+
+        return rootView;
+    }
+
+    /**
+     * Loading video General
+     */
+    private void loadVideo() {
+        // setting adapter
+        adapter = new FirebaseRecyclerAdapter<Video, VideoViewHolder>(Video.class,
+                        R.layout.category_card,
+                        VideoViewHolder.class,
+                        video.orderByChild("CategoryId").equalTo(GENERAL_ID)) {
+            @Override
+            protected void populateViewHolder(VideoViewHolder viewHolder, Video model, int position) {
+                // set video title
+                viewHolder.txtTitle.setText(model.getTitle());
+                // set image
+                Picasso.with(getContext()).load(model.getImage())
+                        .into(viewHolder.imgVideo);
+                final Video currentVideo = model;
+                viewHolder.imgVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "" + currentVideo.getTitle(),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+        // after setting adapter, binding to recycler view
+        recyclerView.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +178,13 @@ public class GeneralFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    /**
+     * Converting dp to pixel
+     */
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }

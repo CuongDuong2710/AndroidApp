@@ -28,16 +28,31 @@ public class Home extends AppCompatActivity
                 SportFragment.OnFragmentInteractionListener,
                 ComicFragment.OnFragmentInteractionListener,
                 GeneralFragment.OnFragmentInteractionListener,
-                MusicForKidsFragment.OnFragmentInteractionListener {
+                MusicForKidsFragment.OnFragmentInteractionListener,
+                AnimalsFragment.OnFragmentInteractionListener,
+                KidsFragment.OnFragmentInteractionListener,
+                KidsSongFragment.OnFragmentInteractionListener {
+
+    FragmentManager fragmentManager = null;
+    Toolbar toolbar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Entertaiment");
+
+        // set default Fragment
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, GeneralFragment.newInstance("test1", "test2"))
+                        .commit();
+
+        // set Toolbar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("General");
         setSupportActionBar(toolbar);
 
+        // set FloatingActionButton
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,34 +93,42 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         // init Fragment manager
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         // init fragment to switch
         Fragment fragment = null;
 
         switch (id) {
             case R.id.nav_general:
                 fragment = GeneralFragment.newInstance("test1", "test2");
+                toolbar.setTitle("General");
                 break;
             case R.id.nav_comic:
                 fragment = ComicFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Comic");
                 break;
             case R.id.nav_kids:
                 fragment = KidsFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Kids");
                 break;
             case R.id.nav_animals:
                 fragment = AnimalsFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Animals");
                 break;
             case R.id.nav_sport:
                 fragment = SportFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Sport");
                 break;
             case R.id.nav_music_for_baby:
                 fragment = MusicForKidsFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Music For Baby");
                 break;
             case R.id.nav_kids_songs:
                 fragment = KidsSongFragment.newInstance("test1", "test2");
+                toolbar.setTitle("Kids Songs");
                 break;
             default:
                 fragment = GeneralFragment.newInstance("test1", "test2");
+                toolbar.setTitle("General");
         }
 
         // Replace fragment

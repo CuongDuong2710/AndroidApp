@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -12,11 +13,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
+import layout.AnimalsFragment;
 import layout.ComicFragment;
-import layout.EntertaimentFragment;
+import layout.GeneralFragment;
+import layout.KidsFragment;
+import layout.KidsSongFragment;
 import layout.MusicForKidsFragment;
 import layout.SportFragment;
 
@@ -24,7 +27,7 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                 SportFragment.OnFragmentInteractionListener,
                 ComicFragment.OnFragmentInteractionListener,
-                EntertaimentFragment.OnFragmentInteractionListener,
+                GeneralFragment.OnFragmentInteractionListener,
                 MusicForKidsFragment.OnFragmentInteractionListener {
 
     @Override
@@ -74,31 +77,41 @@ public class Home extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        // init Fragment manager
         FragmentManager fragmentManager = getSupportFragmentManager();
+        // init fragment to switch
+        Fragment fragment = null;
 
-        if (id == R.id.nav_sport) {
-            // Handle the sport action
+        switch (id) {
+            case R.id.nav_general:
+                fragment = GeneralFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_comic:
+                fragment = ComicFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_kids:
+                fragment = KidsFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_animals:
+                fragment = AnimalsFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_sport:
+                fragment = SportFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_music_for_baby:
+                fragment = MusicForKidsFragment.newInstance("test1", "test2");
+                break;
+            case R.id.nav_kids_songs:
+                fragment = KidsSongFragment.newInstance("test1", "test2");
+                break;
+            default:
+                fragment = GeneralFragment.newInstance("test1", "test2");
+        }
+
+        // Replace fragment
+        if (fragment != null) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,
-                            SportFragment.newInstance("tes1", "test2"))
-                    .commit();
-        } else if (id == R.id.nav_comic) {
-            // Handle the comic action
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,
-                            ComicFragment.newInstance("test1", "test2"))
-                    .commit();
-        } else if (id == R.id.nav_entertaiment) {
-            // Handle the entertainment action
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,
-                            EntertaimentFragment.newInstance("test1", "test2"))
-                    .commit();
-        } else if (id == R.id.nav_music) {
-            // Handle the music action
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,
-                            MusicForKidsFragment.newInstance("test1", "test2"))
+                    .replace(R.id.content_frame, fragment)
                     .commit();
         }
 

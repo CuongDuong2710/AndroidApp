@@ -3,21 +3,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_sport"
-            android:icon="@drawable/ic_pool_black_24dp"
-            android:title="Sport" />
+            android:id="@+id/nav_general"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="General" />
         <item
             android:id="@+id/nav_comic"
             android:icon="@drawable/ic_child_care_black_24dp"
             android:title="Comic" />
         <item
-            android:id="@+id/nav_entertaiment"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Entertainment" />
+            android:id="@+id/nav_kids"
+            android:icon="@drawable/ic_child_friendly_black_24dp"
+            android:title="Kids" />
         <item
-            android:id="@+id/nav_music"
+            android:id="@+id/nav_animals"
+            android:icon="@drawable/ic_gesture_black_24dp"
+            android:title="Animals" />
+        <item
+            android:id="@+id/nav_sport"
+            android:icon="@drawable/ic_pool_black_24dp"
+            android:title="Sport" />
+        <item
+            android:id="@+id/nav_music_for_baby"
             android:icon="@drawable/ic_headset_black_24dp"
-            android:title="Music For Kids" />
+            android:title="Music For Baby" />
+        <item
+            android:id="@+id/nav_kids_songs"
+            android:icon="@drawable/ic_library_music_black_24dp"
+            android:title="Kids Song" />
     </group>
 
 </menu>

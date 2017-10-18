@@ -73,6 +73,8 @@ public class Home extends AppCompatActivity
 
     private final int PICK_IMAGE_REQUEST = 71;
 
+    DrawerLayout drawer = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +100,7 @@ public class Home extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -165,6 +167,8 @@ public class Home extends AppCompatActivity
                 // Here, pushing new category to Firebase Database
                 if (newCategory != null) {
                     categories.push().setValue(newCategory);
+                    Snackbar.make(drawer, "New Category " + newCategory.getName() + " was added",
+                                    Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

@@ -340,10 +340,18 @@ public class Home extends AppCompatActivity
         if(item.getTitle().equals(Common.UPDATE)) {
             showUpdateDialog(adapter.getRef(item.getOrder()).getKey(), adapter.getItem(item.getOrder()));
         } else if(item.getTitle().equals(Common.DELETE)) {
-
+            deleteCategory(adapter.getRef(item.getOrder()).getKey());
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    /**
+     * Delete category item
+     * @param key
+     */
+    private void deleteCategory(String key) {
+        categories.child(key).removeValue();
     }
 
     /**

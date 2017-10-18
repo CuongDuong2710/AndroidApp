@@ -162,7 +162,7 @@ public class Home extends AppCompatActivity
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
-                // Here, just create new Category
+                // Here, pushing new category to Firebase Database
                 if (newCategory != null) {
                     categories.push().setValue(newCategory);
                 }
@@ -198,7 +198,7 @@ public class Home extends AppCompatActivity
                             mDialog.dismiss();
                             Toast.makeText(Home.this, "Uploaded!!!", Toast.LENGTH_SHORT).show();
                             // set value for new Category if image uploaded
-                            // and we can get download link
+                            // and we can get download link 'uri'
                             imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {

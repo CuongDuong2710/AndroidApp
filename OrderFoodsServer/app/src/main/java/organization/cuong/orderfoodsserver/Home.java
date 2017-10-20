@@ -71,8 +71,10 @@ public class Home extends AppCompatActivity
     // Uri for saving image
     Uri saveUri = null;
 
+    // Request to upload image
     private final int PICK_IMAGE_REQUEST = 71;
 
+    // view to display snack bar
     DrawerLayout drawer = null;
 
     @Override

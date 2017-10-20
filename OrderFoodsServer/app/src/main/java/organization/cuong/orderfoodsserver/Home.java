@@ -71,9 +71,6 @@ public class Home extends AppCompatActivity
     // Uri for saving image
     Uri saveUri = null;
 
-    // Request to upload image
-    private final int PICK_IMAGE_REQUEST = 71;
-
     // view to display snack bar
     DrawerLayout drawer = null;
 
@@ -243,7 +240,7 @@ public class Home extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+        if (requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             // get Uri from image selected
             saveUri = data.getData();
@@ -258,7 +255,7 @@ public class Home extends AppCompatActivity
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), Common.PICK_IMAGE_REQUEST);
     }
 
     /**

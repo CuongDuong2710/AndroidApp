@@ -1,3 +1,28 @@
+NULL vs EMPTY String
+
+https://stackoverflow.com/questions/4802015/difference-between-null-and-empty-java-string
+
+"" is an actual string, albeit an empty one.
+
+null, however, means that the String variable points to nothing.
+
+a==b returns false because "" and null do not occupy the same space in memory--in other words, their variables don't point to the same objects.
+
+a.equals(b) returns false because "" does not equal null, obviously.
+
+The difference is though that since "" is an actual string, you can still invoke methods or functions on it like
+
+a.length()
+
+a.substring(0, 1)
+
+and so on.
+
+If the String equals null, like b, Java would throw a NullPointerException if you tried invoking, say:
+
+b.length()
+
+==========================================
 Bi loi khong render CollapsingToolbarLayout duoc
 
 1. "Error Inflating CollapsingToolbarLayout"

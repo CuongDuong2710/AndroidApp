@@ -1,0 +1,16 @@
+Which programmer do you hire: the one who programs a messy program in three hours or the other who does a well-structured program in twelve?
+
+
+When I was doing my internship, we were given a 5 weeks long project. Before making any useful contributions to the company’s systems, we were asked to write a small demo app that would resemble some of the functionalities of their software (a very small subset). I had confidence in myself that I was a fast developer. I wanted to complete every new task as quickly as possible. The other intern (let us call him Fei) was quite slow, he would take a lot of time before writing any code. He would often delete huge chunks of code and rewrite it. Fei seemed to worry less about the deadline. We then had a meeting with the senior developers whereby we were asked to discuss the design of our code. My design was trivial (imagine a few GOD classes that did everything).
+
+Fei’s design, on the other hand, was a thing of beauty. It seemed complicated and I didn’t understand it at the time, but he knew what he was doing. My mentor came to my desk after the meeting and recommended me to discuss with Fei and ask him why he did what he did and how it is different from my design. My mentor asked me how I would change my program if a requirement came that asked to draw shapes that can’t be colored or moved etc. I had learned that it would require a change in nearly every file that I wrote. Fei’s design? He showed me that he just needed to create an interface and plug it in here and there (dependency injection, anyone?).
+
+I learned an important lesson that time. The fast developer will deliver you the requirement you want quickly and it might not even have any bugs. But unless it is a throw-away code, there will certainly be change of requirements. Applying those changes quickly and being able to do regression testing easily is something that will be almost impossible. This developer will leave you a pile of technical debt that will be made even worse by the future programmers of that project (because you are catching a deadline, right?).
+
+Fei had two goals:
+
+1. Write good quality code that is easily understandable
+
+2. Write code that will be easy for others to change
+
+I would hire Fei any day and fire myself.

@@ -278,6 +278,10 @@ public class Home extends AppCompatActivity
                     public void onClick(View view, int position, boolean isLongClick) {
                         Toast.makeText(getBaseContext(), "" + model.getName(),
                                 Toast.LENGTH_SHORT).show();
+                        // send categoryId and start new activity
+                        Intent foodList = new Intent(Home.this, FoodList.class);
+                        foodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        startActivity(foodList);
                     }
                 });
             }

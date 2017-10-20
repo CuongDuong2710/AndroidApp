@@ -37,11 +37,6 @@ https://console.developers.google.com/cloud-resource-manager?previousPage=%2F%3F
 4. Restrict key
 
 ===============================
-2. Icon trên appstore
-6. Ads hiện cuối danh sách
-7. Description trên appstore
-
-===============================
 ERROR
 
 Didn't find class "com.google.firebase.provider.FirebaseInitProvider"
@@ -62,7 +57,7 @@ ADMOB
 https://apps.admob.com
 
 1. Create project
-2. Copy ad-unit
+2. Copy app-unit, ad-unit
 
 3. Add permission
 _ INTERNET
@@ -70,6 +65,11 @@ _ ACCESS_NETWORK_STATE
 
 4. add library
 compile 'com.google.android.gms:play-services-ads:11.0.0
+
+5. When publish PlayStore, make sure:
+
+_ Copy app unit, ad-unit of app.
+_ Remove addTestDevice()
 
 ===============================
 ERROR: Cannot upload image to Firebase Storage
@@ -100,3 +100,9 @@ service firebase.storage {
 I hope to be helpful...bye
 
 2. Auth with Firebase
+
+===============================
+IMPORT IMAGE
+
+1. Right click 'drawable'
+2. Enter 'Batch Drawable Importer'

@@ -11,6 +11,11 @@ import android.widget.Toast;
  * Created by QUOC CUONG on 02/11/2017.
  */
 
+/**
+ * Extending Service will use the same thread of application.
+ * So if service contains some heavy data or heavy work (or downloading/uploading large file),
+ * it may cause some not responding problem for the other activity.
+ */
 public class MyService extends Service {
 
     @Nullable

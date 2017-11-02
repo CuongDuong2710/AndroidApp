@@ -1,2 +1,49 @@
 663 206 801
 71s1sw
+UCu4v2YFz5l5xzczN_6RD8GA
+
+
+2017-09-28T02:18:38.000Z
+
++so sanh publishedAt ->convert ISO to timestamp
++ add playlist link ->  publishedAt
++ unique ID cua video trong firebase
+
+https://groups.google.com/forum/#!topic/firebase-talk/_2YQ--nmTzw
+
+firebase set rule unique column
+
+"UU8pr9FmQ3A_dW99jqWEsveg"
+
+https://www.youtube.com/watch?v=4jduuQh-Uho&list=PLBOh8f9FoHHjOz0vGrD20WcTtJar-LOrw&index=3
+https://www.youtube.com/playlist?list=PLBOh8f9FoHHjOz0vGrD20WcTtJar-LOrw
+
+
+{
+  "rules": {
+    ".read": "auth == null",
+    ".write": "auth == null",
+      "Video": {
+        "$videoId": {
+           // can only write if this $videoId is not already in the db
+          ".write": "!data.exists()",
+            // can only write my own uid into this index
+            ".validate": "newData.val() === auth.uid"
+			".validate": "newData.child('videoId').isString()"
+        }
+      }
+  }
+}
+
+"uploads": "UU8pr9FmQ3A_dW99jqWEsveg"
+
+UU8pr9FmQ3A_dW99jqWEsveg
+
+https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLt4czMqZnUQANxuFAhaKzZWgjExZHXO0R&key=AIzaSyDlMX3v-eiC_SLkwuOrpvL19lRpTZbW4fI
+https://www.youtube.com/channel/UCu9MYfF0vosVcK38oNnnJxw
+
+https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UU8pr9FmQ3A_dW99jqWEsveg&key=AIzaSyDlMX3v-eiC_SLkwuOrpvL19lRpTZbW4fI
+
+
+var query = firebasePlaylistRef.orderByChild("playlist").equalTo(key).once("value", snapshot => {
+			isPlaylistExist = snapshot.val();

@@ -20,6 +20,9 @@
         <!--export = false. Service is used in this application, not other application-->
         <service android:name=".MyService"
             android:exported="false" />
+
+        <service android:name=".SecondService"
+            android:exported="false" />
     </application>
 
 </manifest>

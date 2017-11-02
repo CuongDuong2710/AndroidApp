@@ -13,12 +13,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // Remember agrument View
     public void startMethod(View v) {
         Intent intent = new Intent(this, MyService.class);
+        intent.putExtra("message", "This is a message");
         startService(intent);
     }
 
     public void stopMethod(View v) {
-
+        Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
     }
 }

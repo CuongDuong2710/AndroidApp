@@ -20,7 +20,10 @@ public class MyService extends Service {
     }
 
     /**
-     * Life cycle of service
+     * Life cycle of service.
+     * When call service first, it will call onCreate, onStartCommand.
+     * If we call again (service still runs in background & do not stop),
+     * it will call onStartCommand. It does not call onCreate.
      */
     @Override
     public void onCreate() {
@@ -28,9 +31,24 @@ public class MyService extends Service {
         Toast.makeText(this, "Service is created!", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * onStartCommand will get data by intent
+     * @param intent
+     * @param flags
+     * @param startId
+     * @return
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(this, "Service is started!", Toast.LENGTH_SHORT).show();
+
+        // Get data from intent
+        String message = intent.getStringExtra("message");
+        Toast.makeText(this, "Message: " + message, Toast.LENGTH_SHORT).show();
+
+        // It calls onDestroy
+        //stopSelf();
+
         return super.onStartCommand(intent, flags, startId);
     }
 

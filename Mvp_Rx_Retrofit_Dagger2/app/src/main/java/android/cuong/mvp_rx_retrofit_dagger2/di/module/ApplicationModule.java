@@ -30,6 +30,7 @@ public class ApplicationModule {
         this.mBaseUrl = baseUrl;
     }
 
+    // Dagger will only look for methods annotated with @Provides
     @Singleton
     @Provides
     GsonConverterFactory provideGsonConverterFactory() {

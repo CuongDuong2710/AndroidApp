@@ -47,3 +47,5 @@ https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&p
 
 var query = firebasePlaylistRef.orderByChild("playlist").equalTo(key).once("value", snapshot => {
 			isPlaylistExist = snapshot.val();
+
+			https://www.youtube.com/playlist?list=PLPQFtSFBuNEQa0SnpKZWkmzywYYWn0_Kc

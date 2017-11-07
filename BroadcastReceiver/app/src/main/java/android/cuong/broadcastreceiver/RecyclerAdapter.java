@@ -37,6 +37,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         return arrayList.size();
     }
 
+    /**
+     * Holding components of each item
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView id, number;

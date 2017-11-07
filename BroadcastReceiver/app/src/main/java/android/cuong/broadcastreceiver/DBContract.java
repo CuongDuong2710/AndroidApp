@@ -1,6 +1,7 @@
 package android.cuong.broadcastreceiver;
 
 /**
+ * Declaring constants about table and column name
  * Created by QUOC CUONG on 07/11/2017.
  */
 

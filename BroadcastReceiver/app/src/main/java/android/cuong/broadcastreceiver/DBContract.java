@@ -8,4 +8,5 @@ package android.cuong.broadcastreceiver;
 public class DBContract {
     public static final String TABLE_NAME = "incomingInfo";
     public static final String INCOMING_NUMBER = "incomingNumber";
+    public static final String UPDATE_UI_FILTER = "android.cuong.broadcastreceiver.UPDATE_UI";
 }

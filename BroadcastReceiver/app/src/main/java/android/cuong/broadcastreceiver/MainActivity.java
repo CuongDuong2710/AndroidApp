@@ -1,5 +1,9 @@
 package android.cuong.broadcastreceiver;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<IncomingNumber> arrayList = new ArrayList<>();
     private RecyclerAdapter adapter = null;
 
+    private BroadcastReceiver mBroadcastReceiver = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         // reading from database
         readFromDb();
+
+        mBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                readFromDb();
+            }
+        };
     }
 
     /**
@@ -79,5 +92,17 @@ public class MainActivity extends AppCompatActivity {
             mRecyclerView.setVisibility(View.VISIBLE);
             mTextView.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(mBroadcastReceiver, new IntentFilter(DBContract.UPDATE_UI_FILTER));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mBroadcastReceiver);
     }
 }

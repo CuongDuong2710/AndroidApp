@@ -36,5 +36,8 @@ public class NumberReceiver extends BroadcastReceiver {
             dbHelper.close();
         }
 
+        // sending broadcast to update ui
+        Intent intent1 = new Intent(DBContract.UPDATE_UI_FILTER);
+        context.sendBroadcast(intent1);
     }
 }

@@ -28,7 +28,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.id.setText(arrayList.get(position).getId());
+        holder.id.setText(String.valueOf(arrayList.get(position).getId()));
         holder.number.setText(arrayList.get(position).getNumber());
     }
 
@@ -46,7 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.textId);
+            id = itemView.findViewById(R.id.txtId);
             number = itemView.findViewById(R.id.textNumber);
         }
     }

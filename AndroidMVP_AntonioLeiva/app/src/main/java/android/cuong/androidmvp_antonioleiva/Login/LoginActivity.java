@@ -1,5 +1,7 @@
 package android.cuong.androidmvp_antonioleiva.Login;
 
+import android.content.Intent;
+import android.cuong.androidmvp_antonioleiva.main.MainActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.cuong.androidmvp_antonioleiva.R;
@@ -8,7 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 /**
- * Implementing login action
+ * Implementing login action.
+ * View event passed to presenter onClick()
  */
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
@@ -59,7 +62,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public void navigateToHome() {
-
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     /**

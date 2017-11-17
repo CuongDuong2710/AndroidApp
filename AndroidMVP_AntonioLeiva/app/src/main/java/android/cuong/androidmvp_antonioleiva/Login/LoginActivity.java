@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 /**
- * Implementing login
+ * Implementing login action
  */
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
@@ -28,12 +28,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         findViewById(R.id.button).setOnClickListener(this);
 
         // init presenter
-        presenter = new LoginPresenterImpl();
+        presenter = new LoginPresenterImpl(this);
     }
 
     @Override
-    public void onClick(View view) {
-
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 
     @Override
@@ -59,5 +60,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     @Override
     public void navigateToHome() {
 
+    }
+
+    /**
+     * Clicking login button
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        presenter.validateCredentials(username.getText().toString(), password.getText().toString());
     }
 }

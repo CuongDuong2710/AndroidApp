@@ -1,6 +1,7 @@
 package android.cuong.androidmvp_antonioleiva.Login;
 
 /**
+ * Declaring login method and finished action listener interface
  * Created by QUOC CUONG on 16/11/2017.
  */
 
